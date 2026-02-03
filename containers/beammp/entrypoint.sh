@@ -9,10 +9,14 @@ echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Function to forward signals to the server
 forward_signal() {
+    echo "Received shutdown signal, forwarding to BeamMP..."
+    # Try SIGINT first (Ctrl+C equivalent), then SIGTERM
+    kill -INT "$SERVER_PID" 2>/dev/null
+    sleep 1
     kill -TERM "$SERVER_PID" 2>/dev/null
 }
 
-# Set up signal trapping
+# Set up signal trapping for both SIGTERM and SIGINT
 trap forward_signal SIGTERM SIGINT
 
 # Run the Server in background
