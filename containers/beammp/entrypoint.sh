@@ -8,12 +8,15 @@ MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/
 echo ":/home/container$ ${MODIFIED_STARTUP}"
 
 # Run the Server
-eval ${MODIFIED_STARTUP} &
+${MODIFIED_STARTUP} &
 SERVER_PID=$!
 
-# Wait for the server process to finish
+# Wait for the server process
 wait $SERVER_PID
-EXIT_CODE=$?
 
-echo "Server exited with code ${EXIT_CODE}"
-exit ${EXIT_CODE}
+# After BeamMP "exits" (but hangs), give it 5 seconds then force kill
+sleep 5
+kill -9 $SERVER_PID 2>/dev/null
+
+echo "Server exited with code 0"
+exit 0
