@@ -7,25 +7,5 @@ echo "testing wsg guys"
 MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')")
 echo ":/home/container$ ${MODIFIED_STARTUP}"
 
-# Function to forward signals to the server
-forward_signal() {
-    echo "Received shutdown signal, forwarding to BeamMP..."
-    # Try SIGINT first (Ctrl+C equivalent), then SIGTERM
-    kill -INT "$SERVER_PID" 2>/dev/null
-    sleep 1
-    kill -TERM "$SERVER_PID" 2>/dev/null
-}
-
-# Set up signal trapping for both SIGTERM and SIGINT
-trap forward_signal SIGTERM SIGINT
-
-# Run the Server in background
-eval ${MODIFIED_STARTUP} &
-SERVER_PID=$!
-
-# Wait for the server process to finish
-wait $SERVER_PID
-EXIT_CODE=$?
-
-echo "Server exited with code ${EXIT_CODE}"
-exit ${EXIT_CODE}
+# Run the Server - exec replaces this shell with BeamMP
+exec ${MODIFIED_STARTUP}
