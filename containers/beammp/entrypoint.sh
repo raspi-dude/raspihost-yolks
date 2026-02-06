@@ -1,4 +1,159 @@
 #!/bin/bash
+# /$$   /$$ /$$$$$$$$ /$$     /$$ /$$ /$$
+#| $$  | $$| $$_____/|  $$   /$$/| $$| $$
+#| $$  | $$| $$       \  $$ /$$/ | $$| $$
+#| $$$$$$$$| $$$$$     \  $$$$/  | $$| $$
+#| $$__  $$| $$__/      \  $$/   |__/|__/
+#| $$  | $$| $$          | $$            
+#| $$  | $$| $$$$$$$$    | $$     /$$ /$$
+#|__/  |__/|________/    |__/    |__/|__/
+ 
+#You're not supposed to be here!!
+#Leave or else >:(
+
+export TERM=xterm-256color
+
+green=$(tput setaf 2)
+red=$(tput setaf 1)
+gray=$(tput setaf 8)
+yellow=$(tput setaf 3)
+mike=$(tput setaf 87)
+porple=$(tput setaf 183)
+reset=$(tput sgr0)
+
+motds=(
+    "It's Raspin' time!"
+    "Downtime? Never heard of her!"
+    "running on duct tape and hope"
+    "I'm thinking Miku Miku ooeeoo!"
+    "hosted from a potato"
+    "im terminally online"
+    "Running on 1MB of ram!"
+    "Running on efficient ARM cores!"
+    "ur bald"
+    "Tax_Reports is the baldest person in the world!"
+    "News 39!"
+    "Mitchie M is the goat"
+    "Pi 0's are the best Pis!"
+    "I have successfully obtained 15 Miku figurines"
+    "I bought 393938.xyz for no reason"
+    "Did someone say Bald MC?"
+    "10gbps?!? Network goes zooooooooooooooooooom"
+    "Show me your Ai Dee!"
+    "1% CPU upgrade when you mention mikumiku39 in a ticket"
+    "EU node when? EU node now!"
+    "1% off when using code imthebaldestpersonintheworld at checkout"
+    "Viva viva happy chu-lu-chu-chu"
+    "I have a 367 day reddit streak"
+    "Check out osu!"
+    "Check out RDR2!"
+    "Inspired by DBH"
+    "Free 39MB storage upgrade when you mentiuon the code mitchiemisthegoat39 in a ticket"
+    "Hard drives? I've never heard of her! Wait a minute..."
+    "DDR3? I've never heard of her!"
+    "Contact me at @raspi_dude on discord!"
+    "Wanna go far away..."
+    "Inside was a blank letter, blank space and line breaks... That's about it"
+    "Did you know that they delisted Never Gonna Give You Up? Check for yourself here https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    "308 Negra Arroyo Lane, Albuquerque, New Mexico 87104"
+    "Hard off and Book off are goated"
+    "Our next node will run on a Raspberry Pi 0 with a 16gb micro SD card!"
+    "does anyone actually read these?"
+    "First person who sends a screenshot of this motd gets a free 314mb storage upgrade (get it? pi? 3.14? hilarious right?) <-This has been claimed, sorry :("
+    "Running on 75GXP drives!"
+    "Let's Ishukan Communication!"
+    "|  ||  ||  |_"
+    "Check out Fantastic Plastic Machine!"
+    "Check out Serani Poji!"
+    "More More Jump!"
+    "Raspihost cup noodle prohibition"
+	"Pertizm is the goat!"
+	"61 62 63 64 I do something in the premade salads at the store (iykyk)"
+	"What's brown and sticky? A stick! What did you think I was going to say?"
+	"I'm a Linux fan and an Apple hater >:)"
+	"Come help me annihilate all Apple products"
+	"Moterola One 5g Ace the goat"
+	"The term 'Raspi' was first used in 1831"
+	"We are Raspi_dude, we carry the leek! We'll fight for the Miku, we'll honor her song!"
+	"Fun fact: In the year 1516, the word 'Bussy' was used more than ever"
+	"Get some gummy bears, some kitty kitty..."
+	"Fun fact: The word 'Skibidi' was first used in 1969"
+	"Debian is the best!"
+	"Alpine is peak!"
+	"'Diddy is being used more than pepperoni!' -Fishstick 2026"
+	"コトコトコトコトコト グツグツグツグツ...グゥ こころ躍る  ハッピーハッピークッキング"
+	"Check out our node stats at https://status.raspihost.org/"
+	"https://hellothereim.raspidude.eu.org/"
+	"https://static.corp.google.com/corpsso/images/dwendwen.jpg"
+	"Do you use craftbukkit for b1.7.3? Check out project posiden!"
+	"Better than Embotic!"
+	"Come back after you collect 100 golden walnuts!"
+	"Check out Folding at Home!"
+	"Check out LowEndTalk!"
+	"Check out Nodeseek!"
+)
+
+art=(
+' /#######                                /##       /##   /##                       /##    '
+'| ##__  ##                              |__/      | ##  | ##                      | ##    '
+'| ##  \ ##  /######   /#######  /######  /##      | ##  | ##  /######   /####### /######  '
+'| #######/ |____  ## /##_____/ /##__  ##| ##      | ######## /##__  ## /##_____/|_  ##_/  '
+'| ##__  ##  /#######|  ###### | ##  \ ##| ##      | ##__  ##| ##  \ ##|  ######   | ##    '
+'| ##  \ ## /##__  ## \____  ##| ##  | ##| ##      | ##  | ##| ##  | ## \____  ##  | ## /##'
+'| ##  | ##|  ####### /#######/| #######/| ##      | ##  | ##|  ######/ /#######/  |  ####/'
+'|__/  |__/ \_______/|_______/ | ##____/ |__/      |__/  |__/ \______/ |_______/    \___/  '
+'                              | ##                                                        '
+'                              | ##                                                        '
+'                              |__/                                                        '
+
+
+)
+
+bar=(
+# '###########################################################################################'
+' '
+)
+
+clear
+echo "${bar:0}" 
+for line in "${art[@]}"; do
+
+    part1="${line:0:47}"
+
+    part2="${line:47}"
+    
+
+    processed_part1=""
+    for (( i=0; i<${#part1}; i++ )); do
+        char="${part1:$i:1}"
+        if [[ "$char" == "_" || "$char" == "/" || "$char" == "|" || "$char" == "\\" ]]; then
+            processed_part1+="${gray}${char}${reset}"
+        else
+            processed_part1+="${green}${char}${reset}"
+        fi
+    done
+    
+    processed_part2=""
+    for (( i=0; i<${#part2}; i++ )); do
+        char="${part2:$i:1}"
+        if [[ "$char" == "_" || "$char" == "/" || "$char" == "|" || "$char" == "\\" ]]; then
+            processed_part2+="${gray}${char}${reset}"
+        else
+            processed_part2+="${red}${char}${reset}"
+        fi
+    done
+    
+    printf "%b%b\n" "$processed_part1" "$processed_part2"
+done
+echo "${bar:0}" 
+printf "%b%b\n" "${yellow}                     Welcome to Raspi Host! - No BS hosting since 2024"
+printf "%b\n" "${reset} "
+random_motd=${motds[$RANDOM % ${#motds[@]}]}
+printf "%b%b\n" "${mike}Raspi_dude's MOTD: " "${porple}$random_motd"
+printf "%b%b\n" "${yellow}Pro tip: Instead of editing the ServerConfig.toml file, edit the values under the Startup tab"
+
+#the actual server stuff starts here
+
 cd /home/container || exit 1
 
 rm -f BeamMP-Server
@@ -35,6 +190,21 @@ fi
 
 curl -fsSL "$DOWNLOAD_URL" -o BeamMP-Server
 chmod +x BeamMP-Server
+
+#mount init pause for first boot
+
+while [ ! -d "Resources" ]; do
+  echo "Finishing inital server setup..."
+  sleep 5
+  mkdir Resources/
+  mkdir Resources/Client
+  mkdir Resources/Server
+  mkdir Resources/Server/AutoShutdown
+  echo "Rebooting..."
+  exit 1
+done
+
+#go go go!
 
 MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')")
 echo ":/home/container$ ${MODIFIED_STARTUP}"
