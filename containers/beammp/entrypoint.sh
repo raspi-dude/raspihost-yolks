@@ -48,17 +48,17 @@ motds=(
     "Check out osu!"
     "Check out RDR2!"
     "Inspired by DBH"
-    "Free 39MB storage upgrade when you mentiuon the code mitchiemisthegoat39 in a ticket"
+    "Free 39MB storage upgrade when you mention the code mitchiemisthegoat39 in a ticket"
     "Hard drives? I've never heard of her! Wait a minute..."
     "DDR3? I've never heard of her!"
-    "Contact me at @raspi_dude on discord!"
+    "Contact me at @raspi_dude on Discord!"
     "Wanna go far away..."
     "Inside was a blank letter, blank space and line breaks... That's about it"
     "Did you know that they delisted Never Gonna Give You Up? Check for yourself here https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     "308 Negra Arroyo Lane, Albuquerque, New Mexico 87104"
     "Hard off and Book off are goated"
     "Our next node will run on a Raspberry Pi 0 with a 16gb micro SD card!"
-    "does anyone actually read these?"
+    "Does anyone actually read these?"
     "First person who sends a screenshot of this motd gets a free 314mb storage upgrade (get it? pi? 3.14? hilarious right?) <-This has been claimed, sorry :("
     "Running on 75GXP drives!"
     "Let's Ishukan Communication!"
@@ -72,7 +72,7 @@ motds=(
 	"What's brown and sticky? A stick! What did you think I was going to say?"
 	"I'm a Linux fan and an Apple hater >:)"
 	"Come help me annihilate all Apple products"
-	"Moterola One 5g Ace the goat"
+	"Motorola One 5g Ace the goat"
 	"The term 'Raspi' was first used in 1831"
 	"We are Raspi_dude, we carry the leek! We'll fight for the Miku, we'll honor her song!"
 	"Fun fact: In the year 1516, the word 'Bussy' was used more than ever"
@@ -85,7 +85,7 @@ motds=(
 	"Check out our node stats at https://status.raspihost.org/"
 	"https://hellothereim.raspidude.eu.org/"
 	"https://static.corp.google.com/corpsso/images/dwendwen.jpg"
-	"Do you use craftbukkit for b1.7.3? Check out project posiden!"
+	"Do you use CraftBukkit for b1.7.3? Check out project Posiden!"
 	"Better than Embotic!"
 	"Come back after you collect 100 golden walnuts!"
 	"Check out Folding at Home!"
@@ -193,14 +193,13 @@ chmod +x BeamMP-Server
 
 #mount init pause for first boot
 
-while [ ! -d "Resources" ]; do
-  echo "Finishing inital server setup..."
+while [ ! -d "Resources/Server/RaspiHostUtils" ]; do
+  echo "Finishing initial server setup..."
   sleep 5
-  mkdir Resources/
-  mkdir Resources/Client
-  mkdir Resources/Server
-  mkdir Resources/Server/AutoShutdown
+  mkdir -p Resources/Client
+  mkdir -p Resources/Server/RaspiHostUtils
   echo "Rebooting..."
+  sleep 1
   exit 1
 done
 
