@@ -203,6 +203,8 @@ while [ ! -d "Resources/Server/RaspiHostUtils" ]; do
   exit 1
 done
 
+rm core.*
+
 #go go go!
 
 MODIFIED_STARTUP=$(eval echo "$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')")
