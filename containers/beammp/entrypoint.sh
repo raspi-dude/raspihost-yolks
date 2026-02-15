@@ -201,12 +201,29 @@ DOWNLOAD_URL=$(
 )
 
 if [ -z "$DOWNLOAD_URL" ]; then
-    echo "Error: Failed to find BeamMP binary."
+    echo "Error: Failed to find BeamMP binary from GitHub."
     echo "Expected asset containing: $MATCH"
     exit 1
 fi
 
-curl -fsSL "$DOWNLOAD_URL" -o BeamMP-Server
+# Try downloading from GitHub
+HTTP_CODE=$(curl -fsSL -w "%{http_code}" "$DOWNLOAD_URL" -o BeamMP-Server 2>/dev/null)
+
+# If GitHub fails (403 rate limit or other error), fall back to assets server
+if [ "$HTTP_CODE" != "200" ]; then
+    echo "GitHub download failed (HTTP $HTTP_CODE), falling back to assets.raspihost.org..."
+    rm -f BeamMP-Server
+    
+    FALLBACK_URL="https://assets.raspihost.org/files/$MATCH"
+    
+    if ! curl -fsSL "$FALLBACK_URL" -o BeamMP-Server; then
+        echo "Error: Both GitHub and fallback server failed to download BeamMP binary."
+        exit 1
+    fi
+    
+    echo "Successfully downloaded from fallback server!"
+fi
+
 chmod +x BeamMP-Server
 
 #mount init pause for first boot
