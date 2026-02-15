@@ -91,6 +91,22 @@ motds=(
 	"Check out Folding at Home!"
 	"Check out LowEndTalk!"
 	"Check out Nodeseek!"
+	"Sata Andagi!"
+	"She's just like you and me, but she's homeless, she's homeless... (Gypsy Woman reference)"
+	"La da dee, la dee da"
+	"3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679 (I'm Raspi_dude so of course I memorized pi to 100 digits!)"
+	"And it's a wonder men can eat at all, when things are big that should be small..."
+	"Now there is no sound, if we all live underground... Wait, is that a Linux reference in a Jamiroquai song?"
+	"Man, this week was exhausting / But at least it's finally Friday / Wait, what was so special about Friday / Man, I could've sworn there was something"
+	"Bro, it’s FQDN Friday, domains by my side, ay"
+	"Check out Azumanga Daioh!"
+	"Mambo, Mambo! Omatsuri Mambo!"
+	"Uchira ga uwasa no UMAMUSUME!! \ Saisoku saikyou \ Saikou no men!"
+	"WEII!"
+	"https://youtu.be/8YtqqjskAME"
+	"Daisy, Daisy, give me your answer do"
+	"The baldness gene was cause for dread \ But that's a fear that you can put to bed"
+	"つくりましょう、つくりましょう、さてさて何ができるかな。"
 )
 
 art=(
