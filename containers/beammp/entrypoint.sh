@@ -203,7 +203,7 @@ while [ ! -d "Resources/Server/RaspiHostUtils" ]; do
   exit 1
 done
 
-rm core.*
+rm -f core.* 2>/dev/null
 
 #go go go!
 
