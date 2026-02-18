@@ -211,7 +211,7 @@ esac
 
 echo "Downloading latest BeamMP server for architecture: $ARCH"
 
-# Try to get download URL from GitHub API
+# try github first
 DOWNLOAD_URL=$(
   curl -fsSL https://api.github.com/repos/raspi-dude/BeamMP-Server-Alpine-Linux/releases/latest 2>/dev/null \
   | grep browser_download_url \
@@ -220,7 +220,7 @@ DOWNLOAD_URL=$(
   | cut -d '"' -f 4
 )
 
-# If GitHub API fails or returns empty, go straight to fallback
+# fallback server if error
 if [ -z "$DOWNLOAD_URL" ]; then
     echo "GitHub API failed or rate limited, using fallback server..."
     FALLBACK_URL="https://assets.raspihost.org/files/$MATCH"
@@ -232,11 +232,11 @@ if [ -z "$DOWNLOAD_URL" ]; then
     
     echo "Successfully downloaded from fallback server!"
 else
-    # Try downloading from GitHub
+    # github
     echo "Attempting download from GitHub..."
     HTTP_CODE=$(curl -fsSL -w "%{http_code}" "$DOWNLOAD_URL" -o BeamMP-Server 2>/dev/null)
     
-    # If GitHub download fails, fall back to assets server
+    # fallback stuff
     if [ "$HTTP_CODE" != "200" ]; then
         echo "GitHub download failed (HTTP $HTTP_CODE), falling back to assets.raspihost.org..."
         rm -f BeamMP-Server
