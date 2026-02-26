@@ -19,7 +19,7 @@ gray=$(tput setaf 8)
 yellow=$(tput setaf 3)
 mike=$(tput setaf 87)
 porple=$(tput setaf 183)
-sakuramike=$(tput setaf 218)
+sakuramike=$(tput setaf 225)
 reset=$(tput sgr0)
 
 motds=(
