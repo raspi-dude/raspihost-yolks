@@ -19,6 +19,7 @@ gray=$(tput setaf 8)
 yellow=$(tput setaf 3)
 mike=$(tput setaf 87)
 porple=$(tput setaf 183)
+sakuramike=$(tput setaf 218)
 reset=$(tput sgr0)
 
 motds=(
@@ -188,6 +189,12 @@ printf "%b\n" "${reset} "
 random_motd=${motds[$RANDOM % ${#motds[@]}]}
 printf "%b%b\n" "${mike}Raspi_dude's MOTD: " "${porple}$random_motd"
 printf "%b%b\n" "${yellow}Pro tip: Instead of editing the ServerConfig.toml file, edit the values under the Startup tab"
+printf "%b%b\n" "${sakuramike}#######################################################################################"
+printf "%b%b\n" "${sakuramike}#                         >> Is your server not servering? <<                         #"
+printf "%b%b\n" "${sakuramike}#                    Find tutorials at https://docs.raspihost.org                     #"
+printf "%b%b\n" "${sakuramike}#                            ^hey beta testers, this is WIP                           #"
+printf "%b%b\n" "${sakuramike}#            Or, open a ticket on the billing panel or our Discord server!            #"
+printf "%b%b\n" "${sakuramike}#######################################################################################"
 
 #the actual server stuff starts here
 
