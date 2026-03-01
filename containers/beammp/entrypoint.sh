@@ -266,6 +266,7 @@ while [ ! -d "Resources/Server/RaspiHostUtils" ]; do
   sleep 5
   mkdir -p Resources/Client
   mkdir -p Resources/Server/RaspiHostUtils
+  mkdir -p Resources/Server/RaspiHostUtilsLogs
   echo "Rebooting..."
   sleep 1
   exit 1
