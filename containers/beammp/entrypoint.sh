@@ -260,13 +260,14 @@ fi
 chmod +x BeamMP-Server
 
 #mount init pause for first boot
+mkdir -p Resources/Client
+mkdir -p Resources/Server/RaspiHostUtils
+mkdir -p Resources/Server/RaspiHostUtilsLogs
 
-while [ ! -d "Resources/Server/RaspiHostUtils" ]; do
+while [ ! -f "Resources/Server/RaspiHostUtils/.initialized" ]; do
   echo "Finishing initial server setup..."
   sleep 5
-  mkdir -p Resources/Client
-  mkdir -p Resources/Server/RaspiHostUtils
-  mkdir -p Resources/Server/RaspiHostUtilsLogs
+  touch Resources/Server/RaspiHostUtils/.initialized
   echo "Rebooting..."
   sleep 1
   exit 1
