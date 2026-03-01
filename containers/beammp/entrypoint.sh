@@ -264,10 +264,10 @@ mkdir -p Resources/Client
 mkdir -p Resources/Server/RaspiHostUtils
 mkdir -p Resources/Server/RaspiHostUtilsLogs
 
-while [ ! -f "Resources/Server/RaspiHostUtils/.initialized" ]; do
+while [ ! -f "Resources/Server/RaspiHostUtilsLogs/.initialized" ]; do
   echo "Finishing initial server setup..."
   sleep 5
-  touch Resources/Server/RaspiHostUtils/.initialized
+  touch Resources/Server/RaspiHostUtilsLogs/.initialized
   echo "Rebooting..."
   sleep 1
   exit 1
