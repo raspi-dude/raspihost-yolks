@@ -11,7 +11,8 @@ RUN          ln -s /home/container/ /nonexistent
 ENV          USER=container HOME=/home/container
 
 ## Install dependencies
-RUN          apt install -y --no-install-recommends \
+RUN          apt-get update && apt-get upgrade -y \
+             && apt install -y --no-install-recommends \
              libc6 git wget curl iproute2 \
              ca-certificates tzdata locales \
              libatomic1 libstdc++6 libssl-dev \
