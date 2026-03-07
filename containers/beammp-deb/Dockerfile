@@ -7,9 +7,9 @@ RUN         apt-get update \
                 liblua5.3-0 \
                 libncurses6 git \
             && apt-get clean \
-            && rm -rf /var/lib/apt/lists/*
+            && rm -rf /var/lib/apt/lists/* \
+            && useradd -m -d /home/container container
 
-RUN         adduser --disabled-password --gecos "" --home /home/container container
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
