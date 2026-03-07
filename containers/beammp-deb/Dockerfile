@@ -16,7 +16,7 @@ RUN          apt-get update && apt-get upgrade -y \
              libc6 git wget curl iproute2 \
              ca-certificates tzdata locales \
              libatomic1 libstdc++6 libssl-dev \
-             liblua5.3-0 sqlite3 libsqlite3-dev \
+             liblua5.3-0 \
              procps tini \
              && apt-get clean \
              && rm -rf /var/lib/apt/lists/*
