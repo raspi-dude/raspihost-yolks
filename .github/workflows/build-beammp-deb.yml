@@ -28,4 +28,4 @@ jobs:
           context: containers/beammp-deb
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ghcr.io/${{ github.repository }}:alpine-beammp
+          tags: ghcr.io/${{ github.repository }}:debian-beammp
