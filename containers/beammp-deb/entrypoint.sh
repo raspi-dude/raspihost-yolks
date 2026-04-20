@@ -121,7 +121,7 @@ motds=(
 	"Minio is lowk bald, Garage for the win!"
 	"Raspberry heaven 🎵"
 	"I now have a room full of Miku merch :D"
-	"Surprisingly, CA-1 gets more https requests than the panel server"
+	"Surprisingly, CA-1 gets more DNS requests than the panel server"
 	"I LOVE KDE PLASMA!!!"
 	"Don't you lecture me with your 30 dollar server!"
 	"Shikanoko nokonoko koshitantan"
