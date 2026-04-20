@@ -129,6 +129,7 @@ motds=(
 	"ウイスキーがお好きでしょ, もう少ししゃべりましょ 🎵"
 	"https://youtu.be/l-baM0t3H90"
 	"24 Dragon Magic 🎵"
+	"https://youtu.be/HSDVn1DorvM"
 )
 
 art=(
