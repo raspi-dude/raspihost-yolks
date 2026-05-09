@@ -129,6 +129,20 @@ motds=(
 	"ウイスキーがお好きでしょ, もう少ししゃべりましょ 🎵"
 	"https://youtu.be/l-baM0t3H90"
 	"24 Dragon Magic 🎵"
+	"Check out Intel Optane!"
+	"Inland Basic PLA is actually pretty decent"
+	"Layer shifts in my 3d prints pmo"
+	"Will hantavirus become covid v2?"
+	"I really want to try the volkswagen sausage"
+	"If you need large quantities of CR2032 batteries for cheap hmu"
+	"In-N-Out is the best"
+	"B787-9 hydraulic sounds give me an eargasm"
+	"Check out the ranch version of the Trader Joe's Takis, they are actually pretty good"
+	"I should probably get rid of the spicy pillow under my desk"
+	"NVMe cache actually makes a ginemenasaurus difference in HDD speeds"
+	"Happy 55th birthday NE555P!"
+	"True Miku fans never speak ill of Teto"
+	"Sunset bike rides on Fridays are such a vibe"
 )
 
 art=(
