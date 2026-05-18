@@ -1,4 +1,4 @@
-name: Build Beam MP Debian Yolk
+name: Build Beam MP Development Yolk
 on:
   push:
     branches: [ master ]
