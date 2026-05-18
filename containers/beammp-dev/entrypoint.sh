@@ -229,24 +229,20 @@ MIRROR_URL="https://mirror.raspihost.org"
 SKIP_DOWNLOAD=false
 
 if [ -n "$MIRROR_URL" ]; then
-    echo "Using mirror: $MIRROR_URL"
     HASH_URL="${MIRROR_URL}/${ASSET_NAME}.sha256"
     BINARY_URL="${MIRROR_URL}/${ASSET_NAME}"
 
-    # Try to fetch the expected hash from the mirror
     EXPECTED_HASH=$(curl -sSL --fail "$HASH_URL" 2>/dev/null)
     if [ $? -eq 0 ] && [ -n "$EXPECTED_HASH" ]; then
-        # Hash file retrieved – check existing binary
         if [ -f BeamMP-Server ]; then
             CURRENT_HASH=$(sha256sum BeamMP-Server | awk '{print $1}')
             if [ "$CURRENT_HASH" = "$EXPECTED_HASH" ]; then
-                echo "Local binary already matches the latest hash. Skipping download."
                 SKIP_DOWNLOAD=true
             fi
         fi
 
         if [ "$SKIP_DOWNLOAD" = false ]; then
-            echo "Downloading from mirror..."
+            echo "Restoring server binary..."
 			rm -f BeamMP-Server
             curl -sSL --fail "$BINARY_URL" -o BeamMP-Server || mirror_failed=true
             if [ "$mirror_failed" != true ]; then
