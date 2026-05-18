@@ -286,15 +286,13 @@ if [ "$SKIP_DOWNLOAD" = false ] && { [ -z "$MIRROR_URL" ] || [ "$mirror_failed" 
 fi
 
 # --- First‑boot initialisation ---
-if [ ! -f "Resources/Server/RaspiHostUtilsLogs/.initialized" ] && [ -f "BeamMP-Server" ]; then
+if [ -f "BeamMP-Server" ]; then
     BIN_MTIME=$(stat -c %Y "BeamMP-Server" 2>/dev/null || stat -f %m "BeamMP-Server" 2>/dev/null)
     NOW=$(date +%s)
     AGE=$((NOW - BIN_MTIME))
         if [ "$AGE" -lt 3 ]; then
         echo "Finishing initial server setup..."
-        sleep 3 
-		echo "Rebooting... If the panel says I'm in a crashed state, try starting the server again."
-		touch Resources/Server/RaspiHostUtilsLogs/.initialized
+        timeout 5s ./BeamMP-Server >/dev/null 2>&1
 		exit 1
     fi
 fi
