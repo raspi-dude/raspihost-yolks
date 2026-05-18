@@ -215,47 +215,62 @@ cd /home/container
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-rm -f BeamMP-Server
-
+# --- Architecture detection ---
 ARCH=$(uname -m)
 if [ "$ARCH" = "x86_64" ]; then
-    MATCH="BeamMP-Server.debian.12.x86_64"
+    ARCH_SUFFIX="x86_64"
 else
-    MATCH="BeamMP-Server.debian.12.arm64"
+    ARCH_SUFFIX="arm64"
 fi
+ASSET_NAME="BeamMP-Server.debian.12.${ARCH_SUFFIX}"
 
-MIRROR_URL="https://mirror.raspihost.org"  # Set your mirror URL
+MIRROR_URL="https://mirror.raspihost.org" 
+
 SKIP_DOWNLOAD=false
 
 if [ -n "$MIRROR_URL" ]; then
-    HASH_URL="${MIRROR_URL}/${MATCH}.sha256"
-    BINARY_URL="${MIRROR_URL}/${MATCH}"
+    echo "Using mirror: $MIRROR_URL"
+    HASH_URL="${MIRROR_URL}/${ASSET_NAME}.sha256"
+    BINARY_URL="${MIRROR_URL}/${ASSET_NAME}"
 
-    echo "Checking mirror: $MIRROR_URL"
-    echo "Hash URL: $HASH_URL"
-
+    # Try to fetch the expected hash from the mirror
     EXPECTED_HASH=$(curl -sSL --fail "$HASH_URL" 2>/dev/null)
     if [ $? -eq 0 ] && [ -n "$EXPECTED_HASH" ]; then
-        echo "Expected hash: $EXPECTED_HASH"
+        # Hash file retrieved – check existing binary
         if [ -f BeamMP-Server ]; then
             CURRENT_HASH=$(sha256sum BeamMP-Server | awk '{print $1}')
-            echo "Current hash: $CURRENT_HASH"
             if [ "$CURRENT_HASH" = "$EXPECTED_HASH" ]; then
-                echo "Hashes match! Skipping download."
+                echo "Local binary already matches the latest hash. Skipping download."
                 SKIP_DOWNLOAD=true
-            else
-                echo "Hashes differ. Will download new binary."
             fi
-        else
-            echo "No existing binary found. Will download."
+        fi
+
+        if [ "$SKIP_DOWNLOAD" = false ]; then
+            echo "Downloading from mirror..."
+			rm -f BeamMP-Server
+            curl -sSL --fail "$BINARY_URL" -o BeamMP-Server || mirror_failed=true
+            if [ "$mirror_failed" != true ]; then
+                # Verify integrity of downloaded file
+                DOWNLOAD_HASH=$(sha256sum BeamMP-Server | awk '{print $1}')
+                if [ "$DOWNLOAD_HASH" != "$EXPECTED_HASH" ]; then
+                    echo "WARNING: Mirror binary hash mismatch! Falling back to GitHub."
+                    mirror_failed=true
+                else
+                    chmod +x BeamMP-Server
+                fi
+            fi
+            [ "$mirror_failed" = true ] && rm -f BeamMP-Server
         fi
     else
         echo "Mirror hash file unavailable. Will fall back to GitHub."
+        mirror_failed=true
     fi
 fi
 
-if [ "$SKIP_DOWNLOAD" = false ]; then
+# --- GitHub fallback (always redownloads) ---
+if [ "$SKIP_DOWNLOAD" = false ] && { [ -z "$MIRROR_URL" ] || [ "$mirror_failed" = true ]; }; then
     echo "Fetching latest release from GitHub..."
+    MATCH="${ASSET_NAME}"
     DOWNLOAD_URL=$(curl -s "https://api.github.com/repos/BeamMP/BeamMP-Server/releases/latest" \
         | grep "browser_download_url" \
         | grep "$MATCH" \
@@ -266,7 +281,7 @@ if [ "$SKIP_DOWNLOAD" = false ]; then
         echo "Error: Could not find download URL on GitHub."
         exit 1
     fi
-
+	rm -f BeamMP-Server
     curl -sSL "$DOWNLOAD_URL" -o BeamMP-Server
     chmod +x BeamMP-Server
 fi
