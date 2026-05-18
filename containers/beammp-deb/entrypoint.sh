@@ -207,7 +207,7 @@ printf "%b%b\n" "${yellow}Pro tip: Instead of editing the ServerConfig.toml file
 printf "%b%b\n" "${sakuramike}>> Can't figure something out?"
 printf "%b%b\n" "${sakuramike}>> Find server tutorials at https://docs.raspihost.org"
 
-#kokokara honto no saabaa no mono ga hagimaruyo
+#kokokara honto no saabaa no mono ga hajimaruyo
 
 cd /home/container
 
