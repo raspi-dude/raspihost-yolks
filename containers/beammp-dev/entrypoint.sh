@@ -302,4 +302,4 @@ rm -f core.* 2>/dev/null
 
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
 echo -e ":/home/container$ ${MODIFIED_STARTUP}"
-eval ${MODIFIED_STARTUP}
+eval "${MODIFIED_STARTUP}"
