@@ -283,16 +283,6 @@ if [ "$SKIP_DOWNLOAD" = false ] && { [ -z "$MIRROR_URL" ] || [ "$mirror_failed" 
 fi
 
 # --- First‑boot initialisation ---
-mkdir -p Resources/Client Resources/Server/RaspiHostUtils Resources/Server/RaspiHostUtilsLogs
-
-while [ ! -f "Resources/Server/RaspiHostUtilsLogs/.initialized" ]; do
-    echo "Finishing initial server setup..."
-    sleep 5
-    touch Resources/Server/RaspiHostUtilsLogs/.initialized
-    echo "Rebooting... Try starting the server again."
-    sleep 1
-    exit 1
-done
 
 rm -f core.* 2>/dev/null
 
