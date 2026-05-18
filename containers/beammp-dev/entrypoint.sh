@@ -294,6 +294,7 @@ if [ -f "BeamMP-Server" ]; then
         echo "Finishing initial server setup..."
         sleep 3 
 		echo "Rebooting... If the panel says I'm in a crashed state, try starting the server again."
+		exit 1
     fi
 fi
 
