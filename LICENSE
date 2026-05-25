@@ -1,1 +1,36 @@
+# Raspi Host Public License v1.0
 
+Copyright (c) 2026 Raspi Host
+
+## 1. Permissions
+Permission is hereby granted, free of charge, to any person or commercial 
+entity obtaining a copy of this software and associated configuration files 
+(the "Software"), to use, copy, modify, merge, and run the Software within 
+their own internal or commercial infrastructure, subject to the following 
+conditions.
+
+## 2. Restrictions
+* **No Direct Monetization:** You may not sell, rent, lease, sublicense, or 
+  directly charge a fee for access to this Software, its templates, or 
+  modified variations of it.
+* **No Profit-Making Distribution:** Distribution of this Software, or 
+  works derived from it, must be entirely non-profit. You may charge a fee 
+  solely to cover the actual, baseline hardware or bandwidth costs of 
+  distributing the files (cost-recovery), but you may not generate revenue 
+  or profit from its distribution.
+
+## 3. Commercial Infrastructure Exception
+For the sake of clarity, commercial entities (such as game server providers 
+and hosting companies) ARE permitted to use this Software internally to 
+deploy, configure, and manage their server nodes, even if those nodes serve 
+paying customers. The commercial ban applies strictly to the monetization, 
+sale, or closed-sublicensing of the Software code and templates themselves.
+
+## 4. Disclaimer of Warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+SOFTWARE.
