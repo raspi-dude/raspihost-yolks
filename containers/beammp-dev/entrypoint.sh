@@ -224,7 +224,7 @@ if [ "$ARCH" = "x86_64" ]; then
 else
     ARCH_SUFFIX="arm64"
 fi
-ASSET_NAME="BeamMP-Server.debian.12.${ARCH_SUFFIX}"
+ASSET_NAME="BeamMP-Server-RaspiHost.debian.12.${ARCH_SUFFIX}"
 
 MIRROR_URL="https://mirror.raspihost.org" 
 
