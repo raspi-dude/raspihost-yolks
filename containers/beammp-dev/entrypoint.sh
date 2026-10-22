@@ -218,7 +218,6 @@ cd /home/container
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-# --- Architecture detection ---
 ARCH=$(uname -m)
 if [ "$ARCH" = "x86_64" ]; then
     ARCH_SUFFIX="x86_64"
@@ -266,7 +265,6 @@ if [ -n "$MIRROR_URL" ]; then
     fi
 fi
 
-# --- GitHub fallback (always redownloads) ---
 if [ "$SKIP_DOWNLOAD" = false ] && { [ -z "$MIRROR_URL" ] || [ "$mirror_failed" = true ]; }; then
     echo "Fetching latest release from GitHub..."
     MATCH="${ASSET_NAME}"
@@ -285,7 +283,6 @@ if [ "$SKIP_DOWNLOAD" = false ] && { [ -z "$MIRROR_URL" ] || [ "$mirror_failed" 
     chmod +x BeamMP-Server
 fi
 
-# --- First‑boot initialisation ---
 if [ -f "BeamMP-Server" ]; then
     BIN_MTIME=$(stat -c %Y "BeamMP-Server" 2>/dev/null || stat -f %m "BeamMP-Server" 2>/dev/null)
     NOW=$(date +%s)
